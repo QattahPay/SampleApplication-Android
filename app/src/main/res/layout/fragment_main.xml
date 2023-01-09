@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/barlow_condensed_medium"
+            android:text="@string/page_title"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/instruction_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/barlow_condensed_regular"
+            android:text="@string/page_instructions"
+            android:textColor="@color/gray"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
+            android:id="@+id/instruction_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/barlow_condensed_regular"
+            android:text="@string/put_the_amount"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instruction_1" />
+
+        <LinearLayout
+            android:id="@+id/ref_id_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/instruction_2">
+
+            <EditText
+                android:id="@+id/ref_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/btn_background"
+                android:ems="10"
+                android:hint="@string/ord_1300"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/callback_url_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ref_id_area">
+
+            <EditText
+                android:id="@+id/callback_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/btn_background"
+                android:ems="10"
+                android:hint="@string/https_webhook_qattahpay_sa"
+                android:importantForAutofill="no"
+                android:inputType="textUri"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/callback_url_area">
+
+            <EditText
+                android:id="@+id/amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="4"
+                android:background="@drawable/btn_background"
+                android:ems="10"
+                android:hint="@string/hint"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:text="@string/sar"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/pay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:height="20dp"
+            android:background="@drawable/btn_background"
+            android:drawableStart="@drawable/logo"
+            android:elegantTextHeight="true"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:text="@string/pay_with_qattah_pay"
+            android:textAllCaps="false"
+            android:textColor="@color/qattah_primary_color"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/progress_background"
+            android:elevation="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/btn_background"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/loading"
+                    android:src="@drawable/logo" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/barlow_condensed_medium"
+                    android:text="@string/loading"
+                    android:textAlignment="center"
+                    android:textColor="@color/qattah_primary_color"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

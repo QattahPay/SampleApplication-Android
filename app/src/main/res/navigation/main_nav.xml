@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="sa.qattahpay.qattahpaysampleapp.ui.fragments.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_webFragment"
+            app:destination="@id/webFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/webFragment"
+        android:name="sa.qattahpay.qattahpaysampleapp.ui.fragments.WebFragment"
+        android:label="WebFragment" >
+        <argument
+            android:name="order"
+            app:argType="sa.qattahpay.qattahpaysampleapp.model.Order" />
+        <action
+            android:id="@+id/action_webFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+</navigation>

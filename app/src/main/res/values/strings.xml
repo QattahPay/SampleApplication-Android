@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Qattah Pay Sample App</string>
+    <string name="page_title">Qattah Pay Sample Application</string>
+    <string name="page_instructions">This application is for showing the technical integration in Android to request a new Qattah Pay order. \n As a user I will reach this page after selecting my products that I want to purchase and then click on \'Pay with Qattah\'</string>
+    <string name="pay_with_qattah_pay">Pay with Qattah Pay</string>
+    <string name="put_the_amount">Put the reference id, callback URL, and amount of the order for the simulation of user\'s Qattah Payment cycle</string>
+    <string name="hint">100.00</string>
+    <string name="sar">SAR</string>
+    <string name="loading">Loading…</string>
+    <string name="https_webhook_qattahpay_sa">https://webhook.qattahpay.sa</string>
+    <string name="ord_1300">ord_1300</string>
+</resources>

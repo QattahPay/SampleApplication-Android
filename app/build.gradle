@@ -1,0 +1,91 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs'
+}
+
+android {
+    namespace 'sa.qattahpay.qattahpaysampleapp'
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "sa.qattahpay.qattahpaysampleapp"
+        minSdk 23
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "QATTAH_PRODUCTION_TOKEN", "${QATTAH_PRODUCTION_TOKEN}"
+        buildConfigField "String", "QATTAH_TESTING_TOKEN", "${QATTAH_TESTING_TOKEN}"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    // Androidx libs
+    // required to avoid crash on Android 12 API 31
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // retrofit - for API calls
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+
+    // retrofit - for logging requests
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.1'
+
+    // Toasty - for toast messages
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
+
+    // Timber - for Logging
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    //Koin
+    // Koin main features for Android
+    implementation "io.insert-koin:koin-android:3.2.2"
+
+    // advanced web-view
+    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.2.1'
+
+    // Moshi - for parsing json
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+
+    // Navigation component
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+
+    // Socket.io - for socket connections
+    implementation('io.socket:socket.io-client:2.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+}
