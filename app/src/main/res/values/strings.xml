@@ -7,6 +7,6 @@
     <string name="hint">100.00</string>
     <string name="sar">SAR</string>
     <string name="loading">Loading…</string>
-    <string name="https_webhook_qattahpay_sa">https://webhook.qattahpay.sa</string>
+    <string name="https_webhook_qattahpay_sa">http://161.35.70.189:3000/payment-status/callback</string>
     <string name="ord_1300">ord_1300</string>
 </resources>

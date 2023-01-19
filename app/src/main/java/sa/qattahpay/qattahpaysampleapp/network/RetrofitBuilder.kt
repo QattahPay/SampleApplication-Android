@@ -21,7 +21,7 @@ object RetrofitBuilder {
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .client(okHttpClient)
-        .baseUrl(Constants.qattahBaseUrl)
+        .baseUrl(Constants.apiBaseUrl())
         .addConverterFactory(
             MoshiConverterFactory.create(
                 Moshi.Builder().add(KotlinJsonAdapterFactory()).build()

@@ -7,6 +7,9 @@ plugins {
     id 'androidx.navigation.safeargs'
 }
 
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
 android {
     namespace 'sa.qattahpay.qattahpaysampleapp'
     compileSdk 32
@@ -20,8 +23,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "QATTAH_PRODUCTION_TOKEN", "${QATTAH_PRODUCTION_TOKEN}"
-        buildConfigField "String", "QATTAH_TESTING_TOKEN", "${QATTAH_TESTING_TOKEN}"
+        buildConfigField "String", "QATTAH_PRODUCTION_TOKEN", localProperties.getProperty("QATTAH_PRODUCTION_TOKEN")
+        buildConfigField "String", "QATTAH_TESTING_TOKEN", localProperties.getProperty("QATTAH_TESTING_TOKEN")
     }
 
     buildTypes {

@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.launch
 import sa.qattahpay.qattahpaysampleapp.model.ApiResponse
 import timber.log.Timber
@@ -17,8 +18,8 @@ class MainViewModel(
     val progressing: MutableLiveData<Boolean>
         get() = _progressing
 
-    private val _newOrderResponse = MutableLiveData<ApiResponse>()
-    val newOrderResponse: MutableLiveData<ApiResponse>
+    private val _newOrderResponse = MutableLiveData<ApiResponse?>()
+    val newOrderResponse: MutableLiveData<ApiResponse?>
         get() = _newOrderResponse
 
     private val _isPaymentSucceeded = MutableLiveData<Boolean>()
@@ -31,15 +32,36 @@ class MainViewModel(
 
     fun pay(ref_id: String, callback_url: String, amount: Float) {
         viewModelScope.launch {
-            newOrderResponse.value = _mainRepository.createNewOrders(ref_id, callback_url, amount)
+            try {
+                val apiResponse = _mainRepository.createNewOrder(ref_id, callback_url, amount)
+                if (apiResponse?.message != null) {
+                    Toasty.error(getApplication(), "Error: ${apiResponse.message}").show()
+                } else {
+                    if (apiResponse?.successful == true) {
+                        _newOrderResponse.value = apiResponse
+                    } else {
+                        _isPaymentSucceeded.value = false
+                    }
+                }
+            } catch (e: Exception) {
+                Timber.tag(TAG).e(e)
+                Toasty.error(getApplication(), "Error: ${e.message}").show()
+            }
+
+            progressing.value = false
         }
     }
 
     fun startListener() {
         _mainRepository.startSocketListener { orderId ->
             viewModelScope.launch {
-                _isPaymentSucceeded.value =
-                    _mainRepository.orderPaymentStatus(orderId)?.data?.order?.payment_status == "paid"
+                try {
+                    _isPaymentSucceeded.value =
+                        _mainRepository.orderPaymentStatus(orderId)?.data?.order?.payment_status == "PAID"
+                } catch (e: Exception) {
+                    Timber.tag(TAG).e(e)
+                    Toasty.error(getApplication(), "Error: ${e.message}").show()
+                }
             }
         }
     }

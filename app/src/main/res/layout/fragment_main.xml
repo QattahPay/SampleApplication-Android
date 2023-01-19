@@ -107,6 +107,7 @@
                 android:inputType="textUri"
                 android:minHeight="48dp"
                 android:padding="10dp"
+                android:text="@string/https_webhook_qattahpay_sa"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray"
                 android:textSize="20sp" />

@@ -54,7 +54,7 @@ class WebFragment : BaseFragment(), AdvancedWebView.Listener {
         Timber.tag(TAG).d("setupBinding()")
         with(binding) {
             webView.setListener(activity, this@WebFragment)
-            webView.loadUrl(Constants.APPLICATION_URL + order.id)
+            webView.loadUrl(Constants.applicationBaseUrl() + order.id)
         }
     }
 

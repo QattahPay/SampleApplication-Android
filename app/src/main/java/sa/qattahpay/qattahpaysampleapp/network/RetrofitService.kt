@@ -14,7 +14,7 @@ interface RetrofitService {
         "Accept: application/json"
     )
     fun createNewQattahOrderAsync(
-        @Header("Authorization") token: String = Constants.qattahPayToken,
+        @Header("Authorization") token: String = Constants.qattahPayToken(),
         @Body body: QattahRequest,
     ): Deferred<ApiResponse>
 
@@ -24,7 +24,7 @@ interface RetrofitService {
         "Accept: application/json"
     )
     fun getOrderPaymentStatusAsync(
-        @Header("Authorization") token: String = Constants.qattahPayToken,
+        @Header("Authorization") token: String = Constants.qattahPayToken(),
         @Path(value = "order_id") orderId: String
     ): Deferred<ApiResponse>
 }

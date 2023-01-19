@@ -65,8 +65,7 @@ class MainFragment : BaseFragment() {
 
         viewModel.newOrderResponse.observe(viewLifecycleOwner) {
             Timber.tag(TAG).d("viewModel.newOrderResponse: $it")
-
-            if (it != null) {
+            if (it?.data?.order != null) {
                 viewModel.startListener()
                 findNavController().navigate(
                     MainFragmentDirections.actionMainFragmentToWebFragment(
